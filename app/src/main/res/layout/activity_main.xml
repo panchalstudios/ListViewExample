@@ -1,0 +1,211 @@
+<!-- 1. When you change to a linear layout add orientation -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.newthinktank.messingaround.app.MainActivity"
+    android:gravity="center|top">
+
+    <!-- 4. Setting gravity defines where on the screen the layout aligns to (top, bottom, right,
+    left, center-->
+
+    <!-- 3. layout_weight considers the amount of space needed for each element and divides up the
+    space. Since 1 widget is so much bigger then the other 2 this causes problems. If we change
+    the text in the second to "Goodbye you crazy android" you see that the screen divides up well.
+    (1/3rd for each) -->
+
+    <!--
+    <TextView
+        android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+        -->
+
+    <!-- 2. wrap_content causes the widget to become shorter or longer depending on whether the content
+     is longer than the screen width. If it is longer a newline is added. If it does take up
+     all the space horizontally and a new widget is added it won't show on the screen.
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goodbye you crazy android app it has been nice knowing you"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More Random Text"
+        android:layout_weight="1" />
+    -->
+
+    <!-- 5. We can define the height, width, gravity, background color, background image,
+    whether it is clickable or not, styling and more.  -->
+
+    <!-- 6. We can make these buttons fit by changing their font size (sp : Scale Independent of
+    Pixels : scaled pixels based on preferred font size -->
+
+    <!-- 7. Padding increases the size of the button : padding, paddingBottom, paddingTop,
+     paddingLeft, paddingRight (paddingEnd & paddingStart change depending upon letter direction
+     -->
+
+    <!-- 8. Margin is padding on that surrounds the border : layout_margin, layout_marginLeft
+    layout_marginRight, layout_marginTop, layout_marginBottom -->
+
+    <!-- 9. If we use match_parent with the first widget it will push the rest off the screen. If
+    we use match_parent with the last component it will take up the space not needed by the
+     previous widgets. -->
+
+    <!--
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1st Button"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2nd Button"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_weight="3"/>
+
+        -->
+
+    <!-- 10. layout_weight can be used to define how much of the extra space should be allocated
+     to a widget.
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3rd Button"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_weight="2"/>
+
+        -->
+
+    <!-- 11. You can define multiple gravity options for our layout like this
+     android:gravity="center|top" -->
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you Happy?"
+        android:textSize="20sp"/>
+        -->
+
+    <!-- 12. Let's add a Nested Linear Layout with buttons in it -->
+
+    <!-- 13. You can add a hint if the user may be confused by the component -->
+
+    <!--
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:hint="Pick Me" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:hint="No Pick Me" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    -->
+
+    <!-- 14. We'll also add an editable text field so we can interact. We'll also be
+     able to define the type of input expected so that we can automatically capitalize
+     among other things.-->
+
+    <!--
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:hint="@string/users_name_edit_text"
+            android:inputType="textPersonName"/>
+
+        </LinearLayout>
+
+    -->
+
+    <!-- 15. We can define multiple strings.xml files for different languages
+        ( Highlight the text -> Click Light bulb -> Extract string resource )
+        Then create a directory in /res named values-(2 digit country code)
+        and put a file named strings.xml in it with the translation
+        http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes -->
+
+    <TextView
+        android:id="@+id/happy_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/happy_question"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 16. We can define a function to execute when the user clicks a button with
+        android:onClick="functionNameHere" then we have to create that function in
+        MainActivity.java ( Highlight the function name here and click the lightbulb
+        Create functionNameHere in MainActivity ) Then give everything you want to be able to
+        use in code an id. -->
+
+        <Button
+            android:id="@+id/answer_yes_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answer_yes"
+            android:hint="@string/hint_pick_me"
+            android:onClick="onYesButtonClick"/>
+
+        <Button
+            android:id="@+id/answer_no_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answer_no"
+            android:hint="@string/hint_no_pick_me"
+            android:onClick="onNoButtonClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/users_name_edit_text"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:hint="@string/users_name_edit_text"
+            android:inputType="textPersonName"/>
+
+    </LinearLayout>
+
+</LinearLayout>

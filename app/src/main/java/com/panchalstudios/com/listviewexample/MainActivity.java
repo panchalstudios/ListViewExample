@@ -1,35 +1,52 @@
 package com.panchalstudios.com.listviewexample;
 
-
-        import android.os.Bundle;
-        import android.support.v7.app.ActionBarActivity;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    // 17. Create the components here that you want to use in your code
-
-    private Button answerYesButton, answerNoButton;
-    private EditText usersNameEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 18. Initialize all of your components in the code here
+        // Simple array with a list of my favorite TV shows
+        String[] favoriteTVShows = {"Pushing Daisies", "Better Off Ted",
+                "Twin Peaks", "Freaks and Geeks", "Orphan Black", "Walking Dead",
+                "Breaking Bad", "The 400", "Alphas", "Life on Mars"};
 
-        answerYesButton = (Button) findViewById(R.id.answer_yes_button);
-        answerNoButton = (Button) findViewById(R.id.answer_no_button);
-        usersNameEditText = (EditText) findViewById(R.id.users_name_edit_text);
+        // A View is the generic term and class for every widget you put on your screen.
+        // Views occupy a rectangular area and are responsible for handling events
+        // and drawing the widget.
+
+        // The ListAdapter acts as a bridge between the data and each ListItem
+        // You fill the ListView with a ListAdapter. You pass it a context represented by
+        // this.
+
+        // A Context provides access to resources you need. It provides the current Context, or
+        // facts about the app and the events that have occurred with in it.
+        // android.R.layout.simple_list_item_1 is one of the resources needed.
+        // It is a predefined layout provided by Android that stands in as a default
+
+        // CREATES ROWS FOR EACH VALUE FROM ARRAY
+        ListAdapter theAdapter = new ArrayAdapter<String>(this, R.layout.row_layout,
+                R.id.textView1, favoriteTVShows);
+
+        // We point the ListAdapter to our custom adapter
+        // ListAdapter theAdapter = new MyAdapter(this, favoriteTVShows);
+
+        // Get the ListView so we can work with it
+        ListView theListView = (ListView) findViewById(R.id.listView1);
+
+        // Connect the ListView with the Adapter that acts as a bridge between it and the array
+        theListView.setAdapter(theAdapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,27 +65,5 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onYesButtonClick(View view) {
-
-        String usersName = String.valueOf(usersNameEditText.getText());
-
-        String yourYesResponse = "That is great " + usersName;
-
-        // 19. We display a short popup or Toast when the user clicks
-        // LENGTH_SHORT or LENGTH_LONG defines how long the toast shows
-
-        Toast.makeText(this, yourYesResponse, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onNoButtonClick(View view) {
-
-        String usersName = String.valueOf(usersNameEditText.getText());
-
-        String yourNoResponse = "To bad " + usersName;
-
-        Toast.makeText(this, yourNoResponse, Toast.LENGTH_SHORT).show();
-
     }
 }
